@@ -27,6 +27,7 @@
     nav ul { list-style: none; padding-left: 0; }
     .photo { width: 100%; max-width: 200px; height: auto; }
     .full { display: block; width: 100%; height: auto; margin-bottom: 8px; }
+    .ad { aspect-ratio: 1; object-fit: cover; margin-bottom: 0; }
     .game-link { display: flex; align-items: center; gap: 8px; }
     .game-link img { width: 32px; height: 32px; image-rendering: pixelated; }
     .tag { font-size: 0.85em; }
@@ -68,6 +69,12 @@
         <img src="currupted_space_game/CurSpa_ICON.png" alt="">
         Play Game
       </a>
+    </section>
+
+    <!-- Ads come from the fake_ads folder (see the script at the bottom). Hidden until one loads. -->
+    <section class="panel" id="ad-panel" hidden>
+      <h2>Ad</h2>
+      <img class="full ad" id="ad" alt="Advertisement">
     </section>
     </div>
 
@@ -136,6 +143,34 @@
     <!-- Update the year and name -->
     <p>© 2026 Quintin Levy</p>
   </footer>
+
+  <script>
+    // Shows fake_ads/1.png, 2.png, 3.png ... one at a time, stopping at the first missing number.
+    // To add an ad, put the next number in the fake_ads folder. No changes needed here.
+    var adSeconds = 5;     // how long each ad stays up
+    var adType = ".png";   // file type of every ad
+    var ads = [];
+
+    function findAds(n) {
+      var test = new Image();
+      test.onload = function () { ads.push(test.src); findAds(n + 1); };
+      test.onerror = startAds;
+      test.src = "fake_ads/" + n + adType;
+    }
+
+    function startAds() {
+      if (ads.length === 0) return;
+      var ad = document.getElementById("ad");
+      var i = 0;
+      ad.src = ads[0];
+      document.getElementById("ad-panel").hidden = false;
+      if (ads.length > 1) {
+        setInterval(function () { i = (i + 1) % ads.length; ad.src = ads[i]; }, adSeconds * 1000);
+      }
+    }
+
+    findAds(1);
+  </script>
 
 </body>
 </html>
