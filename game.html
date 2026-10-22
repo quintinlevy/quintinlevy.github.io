@@ -16,6 +16,9 @@
     a { color: #fff; }
     .button { display: inline-block; border: 1px solid #fff; padding: 4px 12px; text-decoration: none; }
     .game { border: 1px solid #fff; width: 100%; aspect-ratio: 1; }
+    .panel { border: 1px solid #fff; background: #000; padding: 12px 16px; margin-top: 16px; }
+    .panel h2 { font-size: 1rem; margin: 0 0 8px; }
+    .panel p { margin: 0; }
 
     /* Background stars: two layers of tiny dots drifting left at different speeds */
     body::before, body::after {
@@ -53,6 +56,11 @@
 
     <!-- The game's .html and .js files live in the currupted_space_game folder -->
     <iframe class="game" src="currupted_space_game/currupted_space.html" title="Currupted Space"></iframe>
+
+    <section class="panel">
+      <h2>About this game</h2>
+      <p>Made in one week for a school game jam. The theme was "Gravity Is Broken".</p>
+    </section>
   </main>
 
 </body>
