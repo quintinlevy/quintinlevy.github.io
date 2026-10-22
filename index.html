@@ -3,61 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Replace "Your Name" in the title and description -->
   <title>Your Name</title>
+  <meta name="description" content="Personal website and resume of Your Name.">
   <style>
-    body { background: #fff; color: #000; font-family: Arial, sans-serif; max-width: 700px; margin: 0 auto; padding: 16px; }
+    * { box-sizing: border-box; }
+    body {
+      max-width: 960px; margin: 0 auto; padding: 16px;
+      background: #fff; color: #000; line-height: 1.5;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      overflow-wrap: anywhere;
+    }
     a { color: #000; }
-    .card { border: 1px solid #000; padding: 16px; margin-bottom: 16px; }
-    .card h2 { margin-top: 0; }
+    h1 { margin: 0 0 16px; }
+    .grid { display: grid; grid-template-columns: 180px 1fr 200px; gap: 16px; align-items: start; }
+    .panel { border: 1px solid #000; padding: 12px 16px; margin-bottom: 16px; }
+    .panel h2 { font-size: 1rem; margin: 0 0 8px; }
+    .panel p { margin: 0 0 8px; }
+    ul { margin: 0; padding-left: 20px; }
+    nav ul { list-style: none; padding-left: 0; }
+    .photo { width: 100%; max-width: 200px; height: auto; }
+    .tag { font-size: 0.85em; }
+    footer { font-size: 0.9em; }
+
+    /* Phones: one column, nav becomes a row of links at the top */
+    @media (max-width: 700px) {
+      .grid { grid-template-columns: 1fr; gap: 0; }
+      nav li { display: inline; margin-right: 12px; }
+    }
   </style>
 </head>
 <body>
 
-  <h1>Your Name</h1>
+  <header>
+    <h1>Your Name</h1>
+  </header>
 
-  <p>
-    <a href="#about">About Me</a> |
-    <a href="#tech">Tech Projects</a> |
-    <a href="#other">Other Projects</a> |
-    <a href="#thoughts">Thoughts</a> |
-    <a href="#contact">Contact</a>
-  </p>
+  <div class="grid">
 
-  <div class="card" id="about">
-    <h2>About Me</h2>
-    <!-- Replace "me.jpg" with your photo's file name (put the photo in the same folder as this file) -->
-    <img src="me.jpg" alt="Photo of me" width="150" height="150">
-    <p>Write a few sentences about yourself.</p>
+    <!-- Left column -->
+    <nav class="panel">
+      <h2>Menu</h2>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#thoughts">Thoughts</a></li>
+        <!-- Put resume.pdf in the same folder as this file -->
+        <li><a href="resume.pdf">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Middle column -->
+    <main>
+      <section class="panel" id="about">
+        <h2>About Me</h2>
+        <!-- Replace "me.jpg" with your photo's file name, and describe the photo in alt -->
+        <img class="photo" src="me.jpg" alt="Photo of Your Name">
+        <p>Write a few sentences about yourself.</p>
+      </section>
+
+      <section class="panel" id="projects">
+        <h2>Projects</h2>
+        <!-- One <li> per project. Tag is optional, e.g. [tech] or [other] -->
+        <ul>
+          <li><a href="#">Project One</a> — one-line description <span class="tag">[tech]</span></li>
+          <li><a href="#">Project Two</a> — one-line description <span class="tag">[other]</span></li>
+        </ul>
+      </section>
+
+      <section class="panel" id="thoughts">
+        <h2>Thoughts</h2>
+        <!-- To add a post: copy thoughts/example-post.html, rename it, and add a line here -->
+        <ul>
+          <li><a href="thoughts/example-post.html">Example Post</a> — <time datetime="2026-10-21">Oct 21, 2026</time></li>
+          <li><a href="thoughts/example-post.html">Another Post</a> — <time datetime="2026-10-01">Oct 1, 2026</time></li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- Right column -->
+    <aside>
+      <section class="panel" id="contact">
+        <h2>Contact</h2>
+        <!-- Replace with your email and profile links -->
+        <ul>
+          <li><a href="mailto:you@example.com">you@example.com</a></li>
+          <li><a href="https://github.com/yourusername">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/yourusername">LinkedIn</a></li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>Now</h2>
+        <p>One or two lines on what you're currently doing.</p>
+      </section>
+    </aside>
+
   </div>
 
-  <div class="card" id="tech">
-    <h2>Tech Projects</h2>
-    <ul>
-      <li>Project One - short description</li>
-      <li>Project Two - short description</li>
-    </ul>
-  </div>
-
-  <div class="card" id="other">
-    <h2>Other Projects</h2>
-    <ul>
-      <li>Project One - short description</li>
-      <li>Project Two - short description</li>
-    </ul>
-  </div>
-
-  <div class="card" id="thoughts">
-    <h2>Thoughts</h2>
-    <ul>
-      <li>Post Title - date</li>
-      <li>Post Title - date</li>
-    </ul>
-  </div>
-
-  <div class="card" id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
-  </div>
+  <footer>
+    <!-- Update the year and name -->
+    <p>© 2026 Your Name</p>
+  </footer>
 
 </body>
 </html>
