@@ -145,17 +145,20 @@
   </footer>
 
   <script>
-    // Shows fake_ads/1.png, 2.png, 3.png ... one at a time, stopping at the first missing number.
+    // Shows fake_ads/1, 2, 3 ... one at a time, stopping at the first missing number.
+    // Each number can be any of the file types below, e.g. 1.png, 2.gif, 3.jpg.
     // To add an ad, put the next number in the fake_ads folder. No changes needed here.
-    var adSeconds = 5;     // how long each ad stays up
-    var adType = ".png";   // file type of every ad
+    var adSeconds = 5;                       // how long each ad stays up
+    var adTypes = [".png", ".gif", ".jpg"];  // file types to look for
     var ads = [];
 
-    function findAds(n) {
+    function findAds(n, t) {
+      t = t || 0;
+      if (t === adTypes.length) { startAds(); return; }  // no file for this number: done
       var test = new Image();
       test.onload = function () { ads.push(test.src); findAds(n + 1); };
-      test.onerror = startAds;
-      test.src = "fake_ads/" + n + adType;
+      test.onerror = function () { findAds(n, t + 1); };
+      test.src = "fake_ads/" + n + adTypes[t];
     }
 
     function startAds() {
